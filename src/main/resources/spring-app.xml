@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
+
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <import resource="loggers.xml"/>
+
+    <bean class="org.springframework.beans.factory.config.PreferencesPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath:client.properties</value>
+            </list>
+        </property>
+        <property name="ignoreResourceNotFound" value="true"/>
+        <property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE"/>
+    </bean>
+
+    <util:map id="loggerMap" map-class="java.util.HashMap">
+        <entry key="INFO" value-ref="consoleEventLogger"/>
+        <entry key="ERROR" value-ref="combinedEventLogger"/>
+    </util:map>
+
+    <util:properties id="clientProps" location="classpath:client.properties"/>
+
+    <bean id="client" class="com.yet.spring.core.beans.Client" c:id="${id}" c:fullName="${name}" p:greeting="${greeting}">
+        &lt;!&ndash;<constructor-arg value="${id}"/>&ndash;&gt;
+        &lt;!&ndash;<constructor-arg value="${name}"/>&ndash;&gt;
+        &lt;!&ndash;<property name="greeting" value="${greeting}"/>&ndash;&gt;
+    </bean>
+
+    <bean id="app" class="com.yet.spring.core.App" c:client-ref="client" c:loggers-ref="loggerMap" p:defaultLogger-ref="cacheFileEventLogger">
+        &lt;!&ndash;<constructor-arg ref="client"/>&ndash;&gt;
+        &lt;!&ndash;<constructor-arg ref="loggerMap"/>&ndash;&gt;
+        &lt;!&ndash;<property name="defaultLogger" ref="cacheFileEventLogger"/>&ndash;&gt;
+    </bean>
+
+    <bean id="event" class="com.yet.spring.core.beans.Event" scope="prototype">
+        <constructor-arg>
+            <bean class="java.util.Date"/>
+        </constructor-arg>
+        <constructor-arg>
+            <bean id="dateFormat" class="java.text.DateFormat" factory-method="getDateTimeInstance"/>
+        </constructor-arg>
+        <property name="msg" value="Some event for user 1"/>
+    </bean>
+
+</beans>
+-->
